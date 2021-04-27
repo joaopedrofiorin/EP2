@@ -1,1 +1,1 @@
-print ('Lourenço Junqueira')
+print ('Lourenço')
