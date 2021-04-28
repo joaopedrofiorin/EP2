@@ -1,3 +1,4 @@
+import random
 from funcoes_do_jogo import *
 
 print('Paciência Acordeão')
