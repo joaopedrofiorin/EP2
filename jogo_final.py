@@ -29,32 +29,52 @@ for carta in baralho:
     print('{}. {}'.format(i,carta))
     i += 1
 
-verifica = possui_movimentos_restantes(baralho)
-
-while verifica:
+while possui_movimentos_restantes(baralho):
     escolha_jogador = int(input('Escolha uma carta (digite um número entre 1 e {}): '.format(len(baralho))))
-
-    if verifica == True:
-        movimentos = lista_movimentos_possiveis(baralho, escolha_jogador - 1)
-        if movimentos == []:
-            print('A carta {} não pode ser movida, escolha outra!'.format(baralho[escolha_jogador - 1]))
-            continue
-        elif movimentos == [1, 3]:
-            print('Sobre qual carta você quer empilhar o {} ?'.format(baralho[escolha_jogador - 1]))
+    if escolha_jogador < 1 or escolha_jogador > len(baralho):
+        print('Posição inválida!')
+        continue
+    movimentos = lista_movimentos_possiveis(baralho, escolha_jogador - 1)
+    if movimentos == []:
+        print('A carta {} não pode ser movida, escolha outra!'.format(baralho[escolha_jogador - 1]))
+        continue
+    elif movimentos == [1, 3]:
+        repete = True
+        while repete:
+            print('Sobre qual carta você quer empilhar o {}?'.format(baralho[escolha_jogador - 1]))
             print('1. {}'.format(baralho[escolha_jogador - 2]))
             print('2. {}'.format(baralho[escolha_jogador - 4]))
             decisao = input('Digite o número de sua escolha (1 ou 2): ')
             if decisao == '1':
-                baralho_atualizado = empilha(baralho, escolha_jogador - 1, escolha_jogador - 2)
+                baralho = empilha(baralho, escolha_jogador - 1, escolha_jogador - 2)
                 c = 1
-                for carta in baralho_atualizado:
+                for carta in baralho:
                     print('{}. {}'.format(c,carta))
                     c += 1
-                continue
+                break
             elif decisao == '2':
-                baralho_atualizado = empilha(baralho, escolha_jogador - 1, escolha_jogador - 4)
+                baralho = empilha(baralho, escolha_jogador - 1, escolha_jogador - 4)
                 c = 1
-                for carta in baralho_atualizado:
+                for carta in baralho:
                     print('{}. {}'.format(c,carta))
                     c += 1
+                break
+            else:
+                print('Opção inválida!')
                 continue
+        continue
+    else:
+        if movimentos == [1]:
+            baralho = empilha(baralho, escolha_jogador - 1, escolha_jogador - 2)
+            c = 1
+            for carta in baralho:
+                print('{}. {}'.format(c,carta))
+                c += 1
+            continue
+        else: 
+            baralho = empilha(baralho, escolha_jogador - 1, escolha_jogador - 4)
+            c = 1
+            for carta in baralho:
+                print('{}. {}'.format(c,carta))
+                c += 1
+            continue
