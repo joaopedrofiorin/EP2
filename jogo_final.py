@@ -78,3 +78,8 @@ while possui_movimentos_restantes(baralho):
                 print('{}. {}'.format(c,carta))
                 c += 1
             continue
+
+if len(baralho) == 1:
+    print('Parabéns, você ganhou!!!')
+else:
+    print('Você perdeu! :( ')
