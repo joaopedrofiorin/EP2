@@ -87,7 +87,7 @@ while True:
         
     else:
         print('Você perdeu! :( ')
-    outro_jogo = input('Você quer jogar novamente? (sim ou nao)')
+    outro_jogo = input('Você quer jogar novamente? (sim ou nao) ')
     if outro_jogo == 'sim':
         continue
     else:
