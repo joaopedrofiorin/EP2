@@ -46,7 +46,7 @@ def lista_movimentos_possiveis(baralho, indice):
         else:
             return[]
 
-def possui_movimentos_possiveis(baralho):
+def possui_movimentos_restantes(baralho):
     lista_possivel = []
     for carta in baralho: 
         movimentos = lista_movimentos_possiveis(baralho,baralho.index(carta))
