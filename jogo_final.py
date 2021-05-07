@@ -1,5 +1,6 @@
 import random
 from funcoes_do_jogo import *
+from termcolor import colored
 
 print('Paciência Acordeão')
 print('------------------')
@@ -29,6 +30,8 @@ while True:
     baralho = cria_baralho()
     i = 1
     for carta in baralho:
+        if '♦' in carta:
+            colored(carta, 'red')
         print('{}. {}'.format(i,carta))
         i += 1
 
