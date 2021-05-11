@@ -1,6 +1,12 @@
 import random
 from funcoes_do_jogo import *
-from termcolor import colored
+
+RED   = "\033[1;31m"  
+BLUE  = "\033[1;34m"
+GREEN = "\033[0;32m"
+YELLOW = "\u001b[33m"
+MAGENTA = "\u001b[35m"
+RESET = "\033[0;0m"
 
 print('Paciência Acordeão')
 print('------------------')
@@ -25,12 +31,17 @@ print(' ')
 
 while True:
     print('O estado do baralho atual é: ')
-
-
     baralho = cria_baralho()
     i = 1
     for carta in baralho:
-        print('{}. {}'.format(i,carta))
+        if extrai_naipe(carta) == '♦':
+            print( YELLOW + ('{}.{}'.format(i,carta)) + RESET)
+        if extrai_naipe(carta) == '♠':
+            print( BLUE + ('{}.{}'.format(i,carta)) + RESET)
+        if extrai_naipe(carta) == '♥':
+            print( RED + ('{}.{}'.format(i,carta)) + RESET)
+        if extrai_naipe(carta) == '♣':
+            print( GREEN + ('{}.{}'.format(i,carta)) + RESET)
         i += 1
 
     while possui_movimentos_restantes(baralho):
@@ -46,21 +57,35 @@ while True:
             repete = True
             while repete:
                 print('Sobre qual carta você quer empilhar o {}?'.format(baralho[escolha_jogador - 1]))
-                print('1. {}'.format(baralho[escolha_jogador - 2]))
-                print('2. {}'.format(baralho[escolha_jogador - 4]))
+                print(MAGENTA + ('1. {}'.format(baralho[escolha_jogador - 2]) + RESET))
+                print(MAGENTA + ('2. {}'.format(baralho[escolha_jogador - 4]) + RESET))
                 decisao = input('Digite o número de sua escolha (1 ou 2): ')
                 if decisao == '1':
                     baralho = empilha(baralho, escolha_jogador - 1, escolha_jogador - 2)
                     c = 1
                     for carta in baralho:
-                        print('{}. {}'.format(c,carta))
+                        if extrai_naipe(carta) == '♦':
+                            print( YELLOW + ('{}.{}'.format(c,carta)) + RESET)
+                        if extrai_naipe(carta) == '♠':
+                            print( BLUE + ('{}.{}'.format(c,carta)) + RESET)
+                        if extrai_naipe(carta) == '♥':
+                            print( RED + ('{}.{}'.format(c,carta)) + RESET)
+                        if extrai_naipe(carta) == '♣':
+                            print( GREEN + ('{}.{}'.format(c,carta)) + RESET)
                         c += 1
                     break
                 elif decisao == '2':
                     baralho = empilha(baralho, escolha_jogador - 1, escolha_jogador - 4)
                     c = 1
                     for carta in baralho:
-                        print('{}. {}'.format(c,carta))
+                        if extrai_naipe(carta) == '♦':
+                            print( YELLOW + ('{}.{}'.format(c,carta)) + RESET)
+                        if extrai_naipe(carta) == '♠':
+                            print( BLUE + ('{}.{}'.format(c,carta)) + RESET)
+                        if extrai_naipe(carta) == '♥':
+                            print( RED + ('{}.{}'.format(c,carta)) + RESET)
+                        if extrai_naipe(carta) == '♣':
+                            print( GREEN + ('{}.{}'.format(c,carta)) + RESET)
                         c += 1
                     break
                 else:
@@ -72,14 +97,28 @@ while True:
                 baralho = empilha(baralho, escolha_jogador - 1, escolha_jogador - 2)
                 c = 1
                 for carta in baralho:
-                    print('{}. {}'.format(c,carta))
+                    if extrai_naipe(carta) == '♦':
+                        print( YELLOW + ('{}.{}'.format(c,carta)) + RESET)
+                    if extrai_naipe(carta) == '♠':
+                        print( BLUE + ('{}.{}'.format(c,carta)) + RESET)
+                    if extrai_naipe(carta) == '♥':
+                        print( RED + ('{}.{}'.format(c,carta)) + RESET)
+                    if extrai_naipe(carta) == '♣':
+                        print( GREEN + ('{}.{}'.format(c,carta)) + RESET)
                     c += 1
                 continue
             else: 
                 baralho = empilha(baralho, escolha_jogador - 1, escolha_jogador - 4)
                 c = 1
                 for carta in baralho:
-                    print('{}. {}'.format(c,carta))
+                    if extrai_naipe(carta) == '♦':
+                        print( YELLOW + ('{}.{}'.format(c,carta)) + RESET)
+                    if extrai_naipe(carta) == '♠':
+                        print( BLUE + ('{}.{}'.format(c,carta)) + RESET)
+                    if extrai_naipe(carta) == '♥':
+                        print( RED + ('{}.{}'.format(c,carta)) + RESET)
+                    if extrai_naipe(carta) == '♣':
+                        print( GREEN + ('{}.{}'.format(c,carta)) + RESET)
                     c += 1
                 continue
 
@@ -93,4 +132,3 @@ while True:
         continue
     else:
         break
-
